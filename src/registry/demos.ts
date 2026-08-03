@@ -5,6 +5,8 @@ import TodoList from '../demo/todoList'
 import todoListCode from '../demo/todoList?raw'
 import UseDebounceHook from '../demo/useDebounce'
 import useDebounceCode from '../demo/useDebounce?raw'
+import UseThrottleHook from '../demo/useThrottle'
+import useThrottleCode from '../demo/useThrottle?raw'
 
 export interface DemoEntry {
     /** 唯一标识，同时作为路由路径（建议 kebab-case，如 'my-demo'） */
@@ -56,5 +58,12 @@ export const demoEntries: DemoEntry[] = [
         description: '自定义防抖钩子函数useDebounce',
         component: UseDebounceHook,
         sourceCode: useDebounceCode,
+    },
+    {
+        key: 'useThrottle',
+        name: 'useThrottle',
+        description: '自定义节流钩子函数useThrottle',
+        component: UseThrottleHook,
+        sourceCode: useThrottleCode,
     },
 ]
