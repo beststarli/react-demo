@@ -3,6 +3,8 @@ import CountDown from '../demo/countDown'
 import countDownCode from '../demo/countDown?raw'
 import TodoList from '../demo/todoList'
 import todoListCode from '../demo/todoList?raw'
+import UseDebounceHook from '../demo/useDebounce'
+import useDebounceCode from '../demo/useDebounce?raw'
 
 export interface DemoEntry {
     /** 唯一标识，同时作为路由路径（建议 kebab-case，如 'my-demo'） */
@@ -37,15 +39,22 @@ export const demoEntries: DemoEntry[] = [
     {
         key: 'countdown',
         name: 'CountDown',
-        description: '倒计时示例',
+        description: '倒计时组件',
         component: CountDown,
         sourceCode: countDownCode,
     },
     {
         key: 'todolist',
         name: 'TodoList',
-        description: 'TodoList',
+        description: '一个简单的TodoList',
         component: TodoList,
         sourceCode: todoListCode,
+    },
+    {
+        key: 'useDebounce',
+        name: 'useDebounce',
+        description: '自定义防抖钩子函数useDebounce',
+        component: UseDebounceHook,
+        sourceCode: useDebounceCode,
     },
 ]
