@@ -6,6 +6,7 @@ React Demo用来存放和展示一些React手撕题源码与效果，题目来�
 - 实现倒计时：[countDown.tsx](./src/demo/countDown.tsx)
 - 实现TodoList：[todoList.tsx](./src/demo/todoList.tsx)
 - 实现防抖钩子函数：[useDebounce.tsx](./src/demo/useDebounce.tsx)
+- 实现节流钩子函数：[useThrottle.tsx](./src/demo/useThrottle.tsx)
 
 ## 如何启动？
 ```bash
