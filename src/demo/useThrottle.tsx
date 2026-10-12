@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 
 // 泛型拓展了节流传入值类型，不只局限于回调函数
 function useThrottle<T>(value: T, limit = 1000) {
@@ -27,6 +27,51 @@ function useThrottle<T>(value: T, limit = 1000) {
     }, [value, limit])
 
     return throttledValue
+}
+
+// 经典回调节流 throttle(fn, delay) 的 Hook 版：结构一致，只是闭包里的 timer 换成 useRef 存 id
+function useThrottleCallback<Args extends unknown[]>(
+    fn: (...args: Args) => void,
+    delay: number
+) {
+    const timerIdRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const fnRef = useRef(fn)
+
+    // 每次渲染同步最新 fn，避免节流回调内部拿到过期的闭包
+    useEffect(() => {
+        fnRef.current = fn
+    })
+
+    const throttled = useCallback(
+        (...args: Args) => {
+            // 冷却中：直接忽略（与经典版一致）
+            if (timerIdRef.current != null) return
+
+            timerIdRef.current = setTimeout(() => {
+                timerIdRef.current = null // 冷却结束，允许下一次触发
+                fnRef.current(...args)
+            }, delay)
+        },
+        [delay]
+    )
+
+    const cancel = useCallback(() => {
+        if (timerIdRef.current != null) {
+            clearTimeout(timerIdRef.current)
+        }
+        timerIdRef.current = null
+    }, [])
+
+    // 组件卸载时兜底清理
+    useEffect(() => {
+        return () => {
+            if (timerIdRef.current != null) {
+                clearTimeout(timerIdRef.current)
+            }
+        }
+    }, [])
+
+    return { throttled, cancel }
 }
 
 const THROTTLE_SECONDS = 5 // 节流秒数，即冷却窗口长度

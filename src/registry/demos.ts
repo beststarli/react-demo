@@ -5,6 +5,8 @@ import TodoList from '../demo/todoList'
 import todoListCode from '../demo/todoList?raw'
 import UseDebounceHook from '../demo/useDebounce'
 import useDebounceCode from '../demo/useDebounce?raw'
+import UseFetchHook from '../demo/useFetch'
+import useFetchCode from '../demo/useFetch?raw'
 import UseThrottleHook from '../demo/useThrottle'
 import useThrottleCode from '../demo/useThrottle?raw'
 
@@ -65,5 +67,12 @@ export const demoEntries: DemoEntry[] = [
         description: '自定义节流钩子函数useThrottle',
         component: UseThrottleHook,
         sourceCode: useThrottleCode,
+    },
+    {
+        key: 'useFetch',
+        name: 'useFetch',
+        description: '自定义请求钩子函数useFetch',
+        component: UseFetchHook,
+        sourceCode: useFetchCode,
     },
 ]
