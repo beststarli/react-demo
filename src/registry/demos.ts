@@ -7,6 +7,8 @@ import UseDebounceHook from '../demo/useDebounce'
 import useDebounceCode from '../demo/useDebounce?raw'
 import UseFetchHook from '../demo/useFetch'
 import useFetchCode from '../demo/useFetch?raw'
+import UseTimeoutHook from '../demo/useTimeout'
+import useTimeoutCode from '../demo/useTimeout?raw'
 import UseThrottleHook from '../demo/useThrottle'
 import useThrottleCode from '../demo/useThrottle?raw'
 
@@ -74,5 +76,12 @@ export const demoEntries: DemoEntry[] = [
         description: '自定义请求钩子函数useFetch',
         component: UseFetchHook,
         sourceCode: useFetchCode,
+    },
+    {
+        key: 'useTimeout',
+        name: 'useTimeout',
+        description: '自定义延时钩子函数useTimeout',
+        component: UseTimeoutHook,
+        sourceCode: useTimeoutCode,
     },
 ]
