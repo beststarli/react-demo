@@ -30,8 +30,7 @@ function useTimeout(callback: () => void, delay?: number | null) {
             return
         }
 
-        const tick = () => savedCallback.current()
-        const timerId = setTimeout(tick, delay)
+        const timerId = setTimeout(() => savedCallback.current(), delay)
 
         return () => clearTimeout(timerId)
     }, [delay])
