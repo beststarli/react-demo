@@ -11,6 +11,8 @@ import UseTimeoutHook from '../demo/useTimeout'
 import useTimeoutCode from '../demo/useTimeout?raw'
 import UseThrottleHook from '../demo/useThrottle'
 import useThrottleCode from '../demo/useThrottle?raw'
+import UseUpdateHook from '../demo/useUpdate'
+import useUpdateCode from '../demo/useUpdate?raw'
 
 export interface DemoEntry {
     /** 唯一标识，同时作为路由路径（建议 kebab-case，如 'my-demo'） */
@@ -83,5 +85,12 @@ export const demoEntries: DemoEntry[] = [
         description: '自定义延时钩子函数useTimeout',
         component: UseTimeoutHook,
         sourceCode: useTimeoutCode,
+    },
+    {
+        key: 'useUpdate',
+        name: 'useUpdate',
+        description: '自定义强制刷新钩子函数useUpdate',
+        component: UseUpdateHook,
+        sourceCode: useUpdateCode,
     },
 ]
